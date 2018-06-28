@@ -1,12 +1,12 @@
 ---
 layout: article
-title:  "10分钟搭建一个基于github和jekyll的免费博客"
+title:  "使用github和jekyll搭建免费博客"
 categories: others
 image:
-    teaser: /teaser/default.jpg
+    teaser: /others/jekyll/Jekyll+Github.jpg
 ---
 
->简介：本文主要介绍如何使用jekyll搭配markdown语法，在github上搭建一个免费的博客
+>简介：本文主要介绍如何使用jekyll在github上搭建一个免费的博客
 
 
 # 方案的优势
@@ -17,20 +17,19 @@ image:
 - jekyll支持markdown to html的转换，以及YAML支持。方便跟多的样式的修改
 
 
-# 准备知识&名词解释
+# 搭建方法
+---
+>
+-  申请域名（也可不用）
+-  在github上建立Repository
+-  在Windows上安装Ruby和Jekyll环境（方便本地调试）
+-  使用Jekyll建立站点发布文章（本地调试）
+-  上传github仓库
+
+## 步骤一：申请域名
 ---
 
-- Markdown: 一种语法标准，用于将一些简单的格式转换成html的语法
-- Markdown Engine: 用于将Makrdown语法的文本转换成html文件或者输出
-    - Github支持的Markdown engine: kramdown(default), redcarpet
-    - jekyll支持的Markdown engine：kramdown(default), redcarpet
-- Markdown for Vim: 
-
-# 步骤一：申请一个github-pages blog
----
-
-具体的步骤在github的帮助页面都有step-by-step的介绍，这里就照搬几张操作截图
-按照以下步骤操作以后，现在你就已经拥有一个通过github服务的blog啦！
+域名的申请不是必须的，可以直接使用github提供的二级域名，其固定格式为https://githubusername.github.io,
 
 - 域名是：<username>.github.io
 - 博文存放在repository：<username>/<username>.github.io
