@@ -29,28 +29,39 @@ image:
 ## 步骤一：申请域名
 ---
 
-域名的申请不是必须的，可以直接使用github提供的二级域名，其固定格式为https://githubusername.github.io,
+域名的申请不是必须的，可以直接使用github提供的二级域名，其固定格式为https://githubusername.github.io。如果想要通过自己的域名访问自己的博客的话，先在申请自己的一个域名，然后再与自己的github二级域名解析，最后在github中设置一下即可，具体操作在下一步骤中介绍。
 
-- 域名是：<username>.github.io
-- 博文存放在repository：<username>/<username>.github.io
+我们只需要将自己的博客数据上传远程仓库即可，github会自动识别为是一个博客系统文件的项目。
 
-当然这也就意味着如果你手工创建一个同样规则的repository的话，github同样也会自动识别为是一个博客系统文件的项目
+## 步骤二：在github上建立Repository
+---
+登录github，进入个人主页，创建一个仓库，此时名字最好为：username.github.io ，username为你的github昵称，通过这样的命名方式，github提供的二级域名访问blog 的时候地址为：https://username.github.io
+当然你也可以不用username，但必须保证结尾为XXX.github.io ,此时github提供的二级域名为：https://username.github.io/XXX.github.io
+![Create Repository](/images/others/jekyll/jekyll_01.jpg)
 
+*如果之前申请有自己的域名可进行以下设置
+  
+进入Setting中，在GitHub Pages中箭头位置输入自己申请的域名
+![domain](/images/others/jekyll/jekyll_02.jpg)
+之后的操作在步骤一中也提过，只需将自己的域名解析到github提供的地址即可。
 
-# 步骤二：在本地搭建一个jekyll环境
+## 步骤三：在Windows上安装Ruby和Jekyll
 ---
 
-如果本机已经有现成ruby基础环境
+jekyll是一种可以生成静态网页Blog的工具，而它是用Ruby语言写的，我们用Jekyll时需要先装上Ruby环境。Windows下是通过第三方安装程序RubyInstaller安装，下载地址[RubyInstaller](https://rubyinstaller.org/)
+![RubyInstaller](/images/others/jekyll/jekyll_03.jpg)
+
+安装完成后我们可以通过命令测试是否成功
 {% highlight bash %}
 gem install jekyll
 {% endhighlight %}
 
-如果是中国大陆用户那么默认的gem源进行安装会有一定困难。这里推荐使用[taobao的ruby源](https://ruby.taobao.org/)。简单的使用以下命令就可以将淘宝repo作为默认repo。
+搭建好ruby基础环境后
 {% highlight bash %}
-gem sources --remove https://rubygems.org/
-gem sources -a https://ruby.taobao.org/
-gem sources -l
+gem install jekyll
 {% endhighlight %}
+
+## 步骤四：使用Jekyll建立站点发布文章（本地调试）
 
 安装完jekyll以后就可以创建一个本地的博客书写目录，进入自己喜欢的路径执行以下命令。随后jekyll就会自动生成一些博客的基础文件和目录，并且包含一篇现成的博文介绍jekyll
 
@@ -59,6 +70,18 @@ gem sources -l
 mkdir -p ~/Blog && cd ~/Blog
 jekyll new .
 {% endraw %}
+{% endhighlight %}
+
+
+由于jekyll自动生成博客框架中有较多的默认值，并且比针对github有特殊处理所以我们在把自己的第一版博客发布到github之前需要做一些个性化配置（博客名，个人信息等）。当然，如果你觉得留着这些默认值也可直接跳过这一段，直接进行发布:)
+个性化配置主要在_config.yml中进行
+
+当然我们也可以使用一些现有的模板主题：[Jekyll模板主题](https://jekyllthemes.io/) ，当然网上还有许多炫酷的主题，根据自己需要自行选择。
+
+### 本地测试
+开启
+{% highlight bash %}
+jekyll server /s /serve
 {% endhighlight %}
 
 
@@ -83,44 +106,34 @@ Server running... press ctrl-c to stop.
 
 
 通过浏览器访问 http://localhost:4000/ 就可以看到如下效果:
-![pic]({{ site.url }}/images/jekyll/how_to_jekyll/1.png)
+![pic](/images/others/jekyll/jekyll_04.jpg)
 
-
-# 步骤三：进行一些简单的个性化配置
----
-
-由于jekyll自动生成博客框架中有较多的默认值，并且比针对github有特殊处理所以我们在把自己的第一版博客发布到github之前需要做一些个性化配置（博客名，个人信息等）。当然，如果你觉得留着这些默认值也可直接跳过这一段，直接进行发布:)
-个性化配置主要在_config.yml中进行
-
-{% highlight yaml %}
-{% raw %}
-title: <title>
-email: <email>
-description: > # <description>
-twitter_username: <twitter_username>
-github_username:  <github_username>
-kramdown:
-  input: GFM
-{% endraw %}
+有些jekyll主题使用了Liquid。在开启时我们需要先进行安装bundle依赖
+{% highlight bash %}
+bundle install
+{% endhighlight %}
+*如果提示bundle不是内部命令时
+{% highlight bash %}
+gem bundle install
 {% endhighlight %}
 
+安装完依赖关系后，我们通过
+{% highlight bash %}
+bundle exec jekyll serve
+{% endhighlight %}
+开启jekyll 服务器，开启后便可以通过 Https://localhost:4000 访问本地站点
+## 步骤五： 上传github仓库
+只需要将本地工程上传github即可，github自动识别网页信息。以后的更新文章只需要更新_posts文件夹中的内容即可。
 
-在post-list页面（也即index页面)增加excerpt（即文章简介功能）。将Blog根目录下的index.html中`site.pages`这一行下增加一行 {% raw %} `{{ post.excerpt }}` {% endraw %}
-
-
-# Tips
+#参考信息
 ---
+> 1. [Jekyll+Github 搭建个人博客](https://www.jianshu.com/p/43dca792e3cd) 
+> 2. [Jekyll 中文社区](http://jekyllcn.com/docs/home/)
+> 3. [Git 的官方API](https://git-scm.com/docs)
 
-- kramdown的语法，以及对Markdown的渲染和最基础的Markdown之间有一定差别，建议查阅[kramdown官方文档](http://kramdown.gettalong.org/quickref.html)
-- 如果是Vim党，那么可以使用[vim-markdown](https://github.com/gabrielelana/vim-markdown)这个插件编辑Markdown文件
-- jekyll的html渲染时还使用了基于liquid的模板语法，如果希望在文中输出例如 {% raw %} `{{ word_to_escape }}` {% endraw %} 这样的标签可以参考[stackoverflow上的回答](http://stackoverflow.com/questions/3426182/how-to-escape-liquid-template-tags)
 
 
-## reference
----
 
-1. <https://help.github.com/articles/using-jekyll-with-pages/>
-2. [build blog with jekyll and github pages](http://www.smashingmagazine.com/2014/08/01/build-blog-jekyll-github-pages/)
-3. [manage post ecerpt](http://melandri.net/2013/11/24/manage-posts-excerpt-in-jekyll/)
+
 
 
