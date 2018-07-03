@@ -2,13 +2,13 @@
 layout: article
 title:  "Markdown基本语法与使用"
 categories: others
-image: 
-	teaser: /others/jekyll/Jekyll+Github.jpg
+image:
+    teaser: /others/jekyll/Jekyll+Github.jpg
 ---
 > 简介：本文主要记录自己Markdown在写作时常用的语法，长期更新
 
 # 简单语法使用
-
+---
 1. 标题
 ![markdown_01](/images/others/markdown/markdown_01.jpg)
 
