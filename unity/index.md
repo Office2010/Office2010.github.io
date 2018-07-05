@@ -7,7 +7,7 @@ excerpt: "I make living from IT"
 
 <div class="tiles">
 {% for post in site.categories.unity %}
-	{% if post.categories contains 'about' %}
+	{% if post.categories contains 'unity' %}
 		{% include post-grid.html %}
 	{% endif %}
 {% endfor %}
