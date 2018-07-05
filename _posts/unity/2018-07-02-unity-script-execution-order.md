@@ -1,7 +1,7 @@
 ---
 layout: article
-title:  "Git基本操作"
+title:  "Unity脚本生命周期"
 categories: unity
 image:
-    teaser: /others/jekyll/Jekyll+Github.jpg
+    teaser: /unity/unity.jpg
 ---
