@@ -9,6 +9,8 @@ image:
 
 # 简单语法使用
 ---
+教程： [markdown教程](https://www.zybuluo.com/mdeditor?url=https%3A%2F%2Fwww.zybuluo.com%2Fstatic%2Feditor%2Fmd-help.markdown)
+<br>
 1. 标题
 ![markdown_01](/images/others/markdown/markdown_01.jpg)
 
