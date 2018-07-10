@@ -1,11 +1,39 @@
 ---
 layout: article
-title:  "Markdown基本语法与使用"
+title:  "链表"
 categories: datastructure
 image:
     teaser: /teaser/default.jpg
 ---
-> 简介：本文主要记录自己Markdown在写作时常用的语法，长期更新
+> 简介：本文用的是C#内置的双向链表
+
+```
+
+  // 1. 链表的声明以及节点的定义
+        LinkedList<string> link = new LinkedList<string>();
+        LinkedListNode<string> node_01 = new LinkedListNode<string>("first node");
+        LinkedListNode<string> node_02 = new LinkedListNode<string>("seconde node");
+        LinkedListNode<string> node_03 = new LinkedListNode<string>("third node");
+        LinkedListNode<string> node_04 = new LinkedListNode<string>("forth node");
+
+        // 2. 节点的加入
+        link.AddFirst(node_01);
+        link.AddAfter(node_01, node_02);
+        link.AddAfter(node_02, node_04);
+        link.AddBefore(node_04, node_03);
+
+        // 3. 计算包含的数量
+        Debug.Log(link.Count);
+
+        // 4. 遍历
+        LinkedListNode<string> current = link.First;
+        while (current != null)
+        {
+            Debug.Log(current.Value);
+            current = current.Next;
+        }
+
+```
 
 # 简单语法使用
 ---
