@@ -3,24 +3,28 @@ layout: article
 title:  "链表"
 categories: datastructure
 image:
-    teaser: /teaser/default.jpg
+    teaser: /datastructure/datastructure.jpg
 ---
 > 简介：本文用的是C#内置的双向链表
 
+## C#内置链表
+内置链表为双向链<br>
 ```
 
-  // 1. 链表的声明以及节点的定义
+  		 // 1. 链表的声明以及节点的定义
         LinkedList<string> link = new LinkedList<string>();
         LinkedListNode<string> node_01 = new LinkedListNode<string>("first node");
         LinkedListNode<string> node_02 = new LinkedListNode<string>("seconde node");
         LinkedListNode<string> node_03 = new LinkedListNode<string>("third node");
         LinkedListNode<string> node_04 = new LinkedListNode<string>("forth node");
+        LinkedListNode<string> node_05 = new LinkedListNode<string>("five node");
 
         // 2. 节点的加入
         link.AddFirst(node_01);
-        link.AddAfter(node_01, node_02);
-        link.AddAfter(node_02, node_04);
+        link.AddAfter(node_01, node_02);            //可做插入用
+        link.AddAfter(node_02, node_04);            //可做插入用
         link.AddBefore(node_04, node_03);
+        link.AddLast(node_05);
 
         // 3. 计算包含的数量
         Debug.Log(link.Count);
@@ -33,40 +37,32 @@ image:
             current = current.Next;
         }
 
+        // 5. 查找节点
+        var result = link.Find("forth node");
+        if (result != null)
+            Debug.Log("找到了此节点");
+
+        // 6. 定位最后的节点
+        var temp = link.Last;
+        Debug.Log("最后一个节点为： " + temp.Value);
+
+        // 7. 删除节点
+        link.Remove("third node");
+        link.Remove(node_04);
+        link.Clear();                               // 删除全部节点
+
 ```
 
-# 简单语法使用
+## 链表
 ---
-教程： [markdown教程](https://www.zybuluo.com/mdeditor?url=https%3A%2F%2Fwww.zybuluo.com%2Fstatic%2Feditor%2Fmd-help.markdown)
+链表是一种物理存储单元上非连续、非顺序的存储结构，数据元素是通过节点中的指针链接次序实现的。<br>
 
-1. 标题 <br>
-![markdown_01](/images/others/markdown/markdown_01.jpg)
+优点：<br>
 
-2. 链接、图片<br>
-连接的格式为：`[百度连接](www.baidu.com)`
-<br>图片的格式为：`![图片](/images/image_01.jpg)`
-<br>注意区别,图标比连接格式多了一个 ！ 字符。
++ 物理存储空间不一定是顺序存储，能灵活的内存动态管理<br>
++ 处理插入和删除操作方便，时间复杂度为O(1);
++ 链表长度不固定，可根据实际情况进行添加。
 
-3. 有序、无序列表<br>
-![markdown_02](/images/others/markdown/markdown_02.jpg)
-
-4. 粗体和斜体<br>
-使用 * 和 ** 表示斜体 和 粗体。
-示例 ： 这是 *斜体*，这是**粗体**。
-
-5. 行内代码块<br>
-使用 `` <br>
-示例： 这是个`行内代码块`。
-6. 代码块<br>
-使用两个\`\`\` <br>
-示例：
-
-```
-void function_1(){
- Debug.Log("hello world");
-}
-```
-<br> &nbsp;&nbsp;
-7. 公式类<br>
-示例：`n<sup>2</sup>=n<sub>x</sub>+1`：n<sup>2</sup>=n<sub>x</sub>+1
-<br>[参考连接](https://www.jianshu.com/p/80ac23666a98)
+<br>
+![link_01](/images/datastructure/link_01.jpg,双向链表的添加操作)<br>
+![link_02](/images/datastructure/link_02.jpg,双向链表的删除操作)
