@@ -63,6 +63,11 @@ image:
 + 处理插入和删除操作方便，时间复杂度为O(1);
 + 链表长度不固定，可根据实际情况进行添加。
 
+
+"双向链表的添加操作"
 <br>
-![link_01](/images/datastructure/link_01.jpg,双向链表的添加操作)<br>
-![link_02](/images/datastructure/link_02.jpg,双向链表的删除操作)
+![link_01](/images/datastructure/link/link_01.jpg)<br>
+
+
+双向链表的删除操作<br>
+![link_02](/images/datastructure/link/link_02.jpg)
